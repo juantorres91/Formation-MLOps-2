@@ -24,6 +24,7 @@ jobs:
       - name: Run Vulture
         run:  "Trainee should add command to run vulture"
       - name: Run tests
-        run:  pytest
+        run: | 
+          pytest
 
 
