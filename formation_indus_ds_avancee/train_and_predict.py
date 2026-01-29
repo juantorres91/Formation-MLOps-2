@@ -18,8 +18,11 @@ def train_model(features: pd.DataFrame, model_registry_folder: str) -> None:
     y = features[target]
     model = RandomForestRegressor(n_estimators=1, max_depth=10, n_jobs=1)
     model.fit(X, y)
-    joblib.dump(model, os.path.join(model_registry_folder, 'model.joblib'))
-
+    #joblib.dump(model, os.path.join(model_registry_folder, 'model.joblib'))
+    
+    now = time.localtime()
+    now_formated = time.strftime("%Y%m%d-%H%M%S", now)
+    joblib.dump(model, os.path.join(model_registry_folder, f"{now_formated}.joblib"))
 
 def predict_with_io(features_path: str, model_path: str, predictions_folder: str) -> None:
     features = pd.read_parquet(features_path)
