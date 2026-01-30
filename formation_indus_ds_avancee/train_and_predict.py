@@ -21,7 +21,7 @@ def train_model(features: pd.DataFrame, model_registry_folder: str) -> None:
 
     with mlflow.start_run():
 
-        #model = RandomForestRegressor(n_estimators=1, max_depth=10, n_jobs=1)
+        # model = RandomForestRegressor(n_estimators=1, max_depth=10, n_jobs=1)
         model = xgb.XGBRegressor(
             n_estimators=100,
             max_depth=3,
