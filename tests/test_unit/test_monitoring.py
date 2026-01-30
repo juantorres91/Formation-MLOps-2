@@ -6,7 +6,7 @@ from pytest import mark
 from sqlalchemy import create_engine
 
 from dags.config import MONITORING_TABLE_NAME
-from formation_indus_ds_avancee.monitoring import monitor_with_io
+from formation_indus_ds_avancee.monitoring import monitor_with_io, monitor
 
 
 @mark.skip("Complete monitor function and test, then remove the mark.skip")
@@ -20,7 +20,7 @@ def test_monitor_with_io_should_write_predictions_mean_to_db(mocked_read_csv):
     mocked_read_csv.return_value = predictions
     db_con_str = 'sqlite:///test_db.db'
     # Start filling expected
-    expected = ...
+    expected = monitor(predictions)
     # End filling expected
 
     # When
